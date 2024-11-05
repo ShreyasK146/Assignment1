@@ -152,7 +152,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: faba7db419ab8804db075d3445e6c5d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SelectedLevelData: {fileID: 0}
 --- !u!4 &383059874
 Transform:
   m_ObjectHideFlags: 0
@@ -336,7 +335,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -50}
+  m_AnchoredPosition: {x: 140, y: 16}
   m_SizeDelta: {x: 1500, y: 550}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &974973433
@@ -352,9 +351,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buttonObject: {fileID: 25548409324105687, guid: b26f638a8528f284f9a2a992fba8d48e, type: 3}
-  onLevelSelected:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!114 &974973434
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -376,9 +372,9 @@ MonoBehaviour:
   m_StartCorner: 0
   m_StartAxis: 0
   m_CellSize: {x: 100, y: 100}
-  m_Spacing: {x: 0, y: 0}
-  m_Constraint: 0
-  m_ConstraintCount: 2
+  m_Spacing: {x: 25, y: 25}
+  m_Constraint: 1
+  m_ConstraintCount: 10
 --- !u!1 &1068052845
 GameObject:
   m_ObjectHideFlags: 0
