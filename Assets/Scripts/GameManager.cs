@@ -63,10 +63,12 @@ public class GameManager : MonoBehaviour
         if (matchedCount == correctAnswersCount && matchedCount == selectedCount)
         {
             animator.SetBool("pass", true);
+            result.text = "Correct...";
         }
         else
         {
             animator.SetBool("pass", false);
+            result.text = "Wrong...";
         }
             
     }
