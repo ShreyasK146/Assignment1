@@ -20,7 +20,13 @@ public class CreateObject : EditorWindow
     bool isCreatingNewLevel;
 
     /*
-     * WINDOW -> SCRIPTABLE OBJECT CREATOR IS THE TOOL TO CREATE LEVELS     
+     * 
+     * 
+     * 
+     * WINDOW -> SCRIPTABLE OBJECT CREATOR IS THE TOOL TO CREATE LEVELS   
+     * 
+     * 
+     * 
      */
 
     [MenuItem("Window/ScriptableObjectCreator")]
@@ -33,9 +39,16 @@ public class CreateObject : EditorWindow
     }
     void OnGUI()
     {
-        List<string> guIds = AssetDatabase.FindAssets("", new[] { path }).ToList();
-        List<string> options1 = guIds.Select(guId => Path.GetFileNameWithoutExtension(AssetDatabase.GUIDToAssetPath(guId)))
+        List<string> guIds = AssetDatabase.FindAssets("", new[] { path }).ToList(); // to basically gets all guids of files in that path 
+        List<string> options1 = guIds.Select(guId => Path.GetFileNameWithoutExtension(AssetDatabase.GUIDToAssetPath(guId))) // gets the file name without extension of all guids
         .ToList();
+
+        /*
+         * THIS CODE CONTAINS THE LOGIC TO CREATE A NEW LEVLES ON EDITOR WINDOW
+         * QUESTION, ANIMATION OVERRIDE CONTROLLER , ANSWERS , OPTIONS AND SAVING OF A NEW LEVEL IS DONE HERE
+         * ALSO HANDLES THE LEVEL REMOVING PART AS WELL
+         */
+
         GUILayout.Label("Create New Level", EditorStyles.boldLabel);
         if (GUILayout.Button("Create"))
         {
@@ -58,8 +71,7 @@ public class CreateObject : EditorWindow
 
             newLevelData.overrideController = (AnimatorOverrideController)EditorGUILayout.ObjectField(
    "Animator Controller", newLevelData.overrideController, typeof(AnimatorOverrideController), false);
-            //newLevelData.startAnimation = (AnimationClip)EditorGUILayout.ObjectField("Start Animation Clip", newLevelData.startAnimation, typeof(AnimationClip), false);
-            //newLevelData.endAnimation = (AnimationClip)EditorGUILayout.ObjectField("End Animation Clip", newLevelData.endAnimation, typeof(AnimationClip), false);
+
 
             EditorGUILayout.BeginHorizontal();
             GUILayout.Label("Options To Choose");
@@ -153,7 +165,9 @@ public class CreateObject : EditorWindow
         EditorGUILayout.EndHorizontal();
 
     }
-
+    /*
+     * THIS CODE IS RESPONSIBLE TO SHOW THE CURRENT LEVEL DETAILS BASED ON THE OPTIONS YOU SELECT FROM DROPDOWN
+     */
     void ShowCurrentLevelDetails(string assetName)
     {
         string assetPath = $"Assets/Prefabs/ScriptableObj/{assetName}.asset";
@@ -181,7 +195,9 @@ public class CreateObject : EditorWindow
             Debug.Log("Level data saved.");
         }
     }
-
+    /*
+     * HOW THE LEVEL DELETION IS HANDLED IS DONE BY THIS PART 
+     */
     void CheckForDeletion(string assetName, List<string> options1 , int selectedIndexToRemove)
     {
         if(toggleValue)
@@ -201,7 +217,9 @@ public class CreateObject : EditorWindow
             
         }
     }
-    
+    /*
+     * SEPERATED THIS PART OF THE CODE WHERE IT HANDLES THE OPTIONS ADDING , REMOVING ALONG WITH ANSWERS 
+     */
     void HandleWordEdit(LevelData level)
     {
 

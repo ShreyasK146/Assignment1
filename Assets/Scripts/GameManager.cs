@@ -48,6 +48,10 @@ public class GameManager : MonoBehaviour
 
     void PopulateGrid()
     {
+        /*
+         * Populating the buttons based on the number of options
+         */
+
         for(int i = 0; i < numberOfOptions; i++)
         {
             Button button = Instantiate(buttonObject,layout.transform);
@@ -58,10 +62,13 @@ public class GameManager : MonoBehaviour
             button.onClick.AddListener(() =>
             {
                 buttonStates[selectedIndex] = !buttonStates[selectedIndex];
-                button.GetComponent<Image>().color = buttonStates[selectedIndex]? Color.grey:Color.white;
+                button.GetComponent<Image>().color = buttonStates[selectedIndex]? Color.grey:Color.white; // if selected change the button color from white to grey or vise versa
             });
         }
     }
+    /*
+     * when player presses check button it basically checks if the selected buttons and answers match if yes different animation is played 
+     */
     public void CheckAnswer()
     {
         int matchedCount = 0;

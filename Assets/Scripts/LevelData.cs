@@ -4,6 +4,10 @@ using Unity.Collections.LowLevel.Unsafe;
 using UnityEngine;
 using UnityEngine.Events;
 
+/*
+ * Scriptable Object to hold the level data
+ */
+
 [CreateAssetMenu(fileName = "Level", menuName = "CreateLevel/Level")]
 public class LevelData : ScriptableObject
 {
