@@ -13,5 +13,6 @@ public class LevelData : ScriptableObject
     public string question;
     public List<string> words = new List<string>();
     public List<bool> answers = new List<bool>();
+    public AnimationClip animation;
 
 }

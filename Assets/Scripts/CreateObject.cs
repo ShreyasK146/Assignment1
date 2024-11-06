@@ -18,6 +18,11 @@ public class CreateObject : EditorWindow
     private int selectedIndexToRemove = 0;
     string path = "Assets/Prefabs/ScriptableObj/";
     bool isCreatingNewLevel;
+
+    /*
+     * WINDOW -> SCRIPTABLE OBJECT CREATOR IS THE TOOL TO CREATE LEVELS     
+     */
+
     [MenuItem("Window/ScriptableObjectCreator")]
     public static void ShowWindow()
     {
@@ -50,6 +55,7 @@ public class CreateObject : EditorWindow
             EditorGUILayout.BeginHorizontal();
             newLevelData.question = EditorGUILayout.TextField(newLevelData.question);
             EditorGUILayout.EndHorizontal();
+            newLevelData.animation = (AnimationClip)EditorGUILayout.ObjectField("Animation Clip", newLevelData.animation, typeof(AnimationClip), false);
 
             EditorGUILayout.BeginHorizontal();
             GUILayout.Label("Options To Choose");
@@ -57,9 +63,11 @@ public class CreateObject : EditorWindow
             GUILayout.Label("Answers");
             EditorGUILayout.EndHorizontal();
 
+    
 
+            EditorGUILayout.Space(20);
             HandleWordEdit(newLevelData);
-
+            EditorGUILayout.Space(20);
             newLevelData.ID = options1.Count + 1;
             EditorGUILayout.BeginHorizontal();
             if (newLevelData.words.Count >= 5)
@@ -150,7 +158,6 @@ public class CreateObject : EditorWindow
         GUILayout.Label("Question",EditorStyles.boldLabel);
         level.question = EditorGUILayout.TextField(level.question);
         EditorGUILayout.EndHorizontal();
-
         EditorGUILayout.BeginHorizontal();
         GUILayout.Label("Options to Choose");
         GUILayout.Space(57);
@@ -159,9 +166,10 @@ public class CreateObject : EditorWindow
         if (level.words == null) level.words = new List<string>();
         if (level.answers == null) level.answers = new List<bool>();
 
-        HandleWordEdit(level);
 
-        
+        HandleWordEdit(level);
+        level.animation = (AnimationClip)EditorGUILayout.ObjectField("Animation Clip", level.animation, typeof(AnimationClip), false);
+
     }
 
     void CheckForDeletion(string assetName, List<string> options1 , int selectedIndexToRemove)
