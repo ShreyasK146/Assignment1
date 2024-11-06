@@ -34,6 +34,7 @@ public class GameManager : MonoBehaviour
         numberOfOptions = LevelManager.Instance.SelectedLevelData.words.Count;
         buttonObject = GameObject.Find("ButtonHolder").GetComponentInChildren<Button>();
         question.text = LevelManager.Instance.SelectedLevelData.question;
+        question.color = Color.yellow;
         layout = GameObject.Find("Layout");
 
         PopulateGrid();
