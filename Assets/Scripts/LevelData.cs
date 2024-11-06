@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.Collections.LowLevel.Unsafe;
 using UnityEngine;
+using UnityEngine.Events;
 
 [CreateAssetMenu(fileName = "Level", menuName = "CreateLevel/Level")]
 public class LevelData : ScriptableObject
@@ -13,6 +14,6 @@ public class LevelData : ScriptableObject
     public string question;
     public List<string> words = new List<string>();
     public List<bool> answers = new List<bool>();
-    public AnimationClip animation;
+    public AnimatorOverrideController overrideController;
 
 }

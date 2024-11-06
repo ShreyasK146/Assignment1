@@ -15,20 +15,36 @@ public class GameManager : MonoBehaviour
     private Button buttonObject;
     LevelData levelData;
     private Dictionary<int, bool> buttonStates;
+    [SerializeField] Animator panelAnimator;
 
 
     private void Start()
     {
-        animator = GameObject.Find("Panel").GetComponent<Animator>();    
+        levelData = LevelManager.Instance.SelectedLevelData;
+        if (levelData.overrideController != null)
+        {
+            panelAnimator.runtimeAnimatorController = levelData.overrideController;
+            Debug.Log("Override Controller Assigned!");
+        }
+        else
+        {
+            Debug.LogError("Override Controller not assigned in LevelData!");
+        }
         buttonStates = new Dictionary<int, bool>();
         numberOfOptions = LevelManager.Instance.SelectedLevelData.words.Count;
         buttonObject = GameObject.Find("ButtonHolder").GetComponentInChildren<Button>();
         question.text = LevelManager.Instance.SelectedLevelData.question;
         layout = GameObject.Find("Layout");
-   
+
         PopulateGrid();
+
+        
+        
     }
+
+
    
+
     void PopulateGrid()
     {
         for(int i = 0; i < numberOfOptions; i++)
@@ -62,13 +78,14 @@ public class GameManager : MonoBehaviour
         int correctAnswersCount = LevelManager.Instance.SelectedLevelData.answers.Count(a => a);
         if (matchedCount == correctAnswersCount && matchedCount == selectedCount)
         {
-            animator.SetBool("pass", true);
             result.text = "Correct...";
+            panelAnimator.SetBool("pass", true);
         }
         else
         {
-            animator.SetBool("pass", false);
             result.text = "Wrong...";
+            panelAnimator.SetBool("pass", false) ;
+
         }
             
     }

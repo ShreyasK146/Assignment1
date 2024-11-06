@@ -13,11 +13,12 @@ MonoBehaviour:
   m_Name: Level 6
   m_EditorClassIdentifier: 
   id: 6
-  question: Testing
+  question: testing
   words:
-  - will my text go out of the button boundary ?
-  - 
-  - 
-  - 
-  - 
+  - test
+  - test
+  - test
+  - test
+  - test
   answers: 0000000000
+  overrideController: {fileID: 22100000, guid: c2c2b0b3679d2ff4e82ca8e90da8c63a, type: 2}

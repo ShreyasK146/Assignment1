@@ -27,8 +27,8 @@ public class CreateObject : EditorWindow
     public static void ShowWindow()
     {
         CreateObject obj = (CreateObject)GetWindow(typeof(CreateObject));
-        obj.minSize = new Vector2(500, 600);
-        obj.maxSize = new Vector2(500, 600);
+        obj.minSize = new Vector2(500, 1200);
+        obj.maxSize = new Vector2(500, 1200);
         
     }
     void OnGUI()
@@ -55,7 +55,11 @@ public class CreateObject : EditorWindow
             EditorGUILayout.BeginHorizontal();
             newLevelData.question = EditorGUILayout.TextField(newLevelData.question);
             EditorGUILayout.EndHorizontal();
-            newLevelData.animation = (AnimationClip)EditorGUILayout.ObjectField("Animation Clip", newLevelData.animation, typeof(AnimationClip), false);
+
+            newLevelData.overrideController = (AnimatorOverrideController)EditorGUILayout.ObjectField(
+   "Animator Controller", newLevelData.overrideController, typeof(AnimatorOverrideController), false);
+            //newLevelData.startAnimation = (AnimationClip)EditorGUILayout.ObjectField("Start Animation Clip", newLevelData.startAnimation, typeof(AnimationClip), false);
+            //newLevelData.endAnimation = (AnimationClip)EditorGUILayout.ObjectField("End Animation Clip", newLevelData.endAnimation, typeof(AnimationClip), false);
 
             EditorGUILayout.BeginHorizontal();
             GUILayout.Label("Options To Choose");
@@ -168,8 +172,14 @@ public class CreateObject : EditorWindow
 
 
         HandleWordEdit(level);
-        level.animation = (AnimationClip)EditorGUILayout.ObjectField("Animation Clip", level.animation, typeof(AnimationClip), false);
+        level.overrideController = (AnimatorOverrideController)EditorGUILayout.ObjectField(
+    "Animator Controller", level.overrideController, typeof(AnimatorOverrideController), false);
 
+        if (GUI.changed)
+        {
+            AssetDatabase.SaveAssets(); 
+            Debug.Log("Level data saved.");
+        }
     }
 
     void CheckForDeletion(string assetName, List<string> options1 , int selectedIndexToRemove)

@@ -21,3 +21,4 @@ MonoBehaviour:
   - Mouse
   - Cow
   answers: 0100010101
+  overrideController: {fileID: 22100000, guid: 68adb19891adf4b4ea6b5d34bff89c5e, type: 2}

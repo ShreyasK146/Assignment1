@@ -390,7 +390,7 @@ Animator:
   m_GameObject: {fileID: 297732648}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 3af51608d535cdd4c8b025142a6ec152, type: 2}
+  m_Controller: {fileID: 9100000, guid: 6e3a9982cf324174f971b1e1cdf4259f, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -767,6 +767,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   question: {fileID: 2080942313}
   result: {fileID: 1676364840}
+  panelAnimator: {fileID: 297732652}
 --- !u!224 &913558695
 RectTransform:
   m_ObjectHideFlags: 0
