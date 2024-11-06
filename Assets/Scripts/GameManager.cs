@@ -79,11 +79,13 @@ public class GameManager : MonoBehaviour
         if (matchedCount == correctAnswersCount && matchedCount == selectedCount)
         {
             result.text = "Correct...";
+            result.color = Color.green;
             panelAnimator.SetBool("pass", true);
         }
         else
         {
             result.text = "Wrong...";
+            result.color = Color.red;
             panelAnimator.SetBool("pass", false) ;
 
         }
